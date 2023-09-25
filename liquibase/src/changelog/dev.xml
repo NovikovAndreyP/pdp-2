@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd">
+
+    <changeSet id="1" author="novikov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user" schemaName="public"/>
+            </not>
+        </preConditions>
+        <comment>Создание таблицы user</comment>
+        <sql>
+            create table users (
+                                      id serial primary key,
+                                      email varchar(70) unique not null,
+                                      name varchar(70) not null,
+                                      password varchar(100) not null
+            );
+        </sql>
+        <rollback>
+            <sql>
+                drop table if exists user;
+            </sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2" author="novikov">
+        <comment>Создание тестового пользователя</comment>
+        <sql>
+            insert into users (email, name, password)
+            values (
+                    'test@test.ru',
+                    'Test',
+                    'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'
+                   )
+        </sql>
+        <rollback>
+            <sql>
+                delete from users where email = 'test@test.ru'
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

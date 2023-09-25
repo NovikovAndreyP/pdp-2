@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "be3f75b9-fb95-424e-9dcb-76a85417405e",
+		"name": "PDP-2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15393944"
+	},
+	"item": [
+		{
+			"name": "Get users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwicGFzc3dvcmQiOiJhNjY1YTQ1OTIwNDIyZjlkNDE3ZTQ4NjdlZmRjNGZiOGEwNGExZjNmZmYxZmEwN2U5OThlODZmN2Y3YTI3YWUzIiwic3ViIjoidGVzdEB0ZXN0LnJ1IiwiaWF0IjoxNjk1NjU4MDkxfQ.4bPZ17r_gCy6SavRzwpediorHoolusXvhojaLTgfU5gQ3I2iRO97XFvpEgkU4p9cvNiqds3CU95zEyRkGuknNg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/my-app/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"my-app",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test@test.ru\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/my-app/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"my-app",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test1@test.ru\",\r\n    \"name\": \"Test\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/my-app/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"my-app",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
